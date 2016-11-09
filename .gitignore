@@ -45,3 +45,6 @@ jspm_packages
 *.iml
 out
 gen
+
+#bower component
+public/lib/
