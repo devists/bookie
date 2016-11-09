@@ -1,10 +1,93 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    {{{body}}}
-  </body>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>Parallax Template - Materialize</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/lib/materialize/dist/css/materialize.min.css" type="text/css" rel="stylesheet"
+          media="screen,projection"/>
+    <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+<div class="main-wrapper">
+    <!--Header-->
+    <header class="navbar-fixed">
+        <nav class="white navbar-bookie">
+            <div class="nav-wrapper container">
+                <a href="/" class="brand-logo fw-100">Bookie</a>
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <form class="nav__search d-inline">
+                    <div class="input-field">
+                        <input class="grey-text text-darken-3" id="search" type="search" required>
+                        <label for="search"><i class="material-icons grey-text text-darken-3">search</i></label>
+                        <i class="material-icons">close</i>
+                    </div>
+                </form>
+                <ul class="right hide-on-med-and-down d-inline">
+                    <li><a href="#!">Explore</a></li>
+                    <li><a href="#!">All Requests</a></li>
+                    <li><a class="btn waves-effect waves-light" href="buttons.html">New Request</a></li>
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
+                    <li><a href="sass.html">Sass</a></li>
+                    <li><a href="badges.html">Components</a></li>
+                    <li><a href="collapsible.html">Javascript</a></li>
+                    <li><a href="mobile.html">Mobile</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!--Content-->
+    <div class="contents">
+        {{{ body }}}
+    </div>
+
+    <footer class="page-footer teal">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Bookie</h5>
+                    <p class="grey-text text-lighten-4">We are a team of college students working on this project like
+                        it's our full time job. Any amount would help support and continue development on this project
+                        and is greatly appreciated.</p>
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Settings</h5>
+                    <ul>
+                        <li><a class="white-text" href="#!">Login</a></li>
+                        <li><a class="white-text" href="#!">Explore</a></li>
+                        <li><a class="white-text" href="#!">All Request</a></li>
+                        <li><a class="white-text" href="#!">New Request</a></li>
+                    </ul>
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Contact</h5>
+                    <ul>
+                        <li><a class="white-text" href="#!">Link 1</a></li>
+                        <li><a class="white-text" href="#!">Link 2</a></li>
+                        <li><a class="white-text" href="#!">Link 3</a></li>
+                        <li><a class="white-text" href="#!">Link 4</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                Made by <a class="brown-text text-lighten-3" href="https://github.com/devists">Devists</a>
+            </div>
+        </div>
+    </footer>
+    <!--Footer-->
+</div>
+
+<!--  Scripts-->
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+<script src="/lib/materialize/dist/js/materialize.min.js"></script>
+<script src="/js/init.js"></script>
+
+</body>
 </html>

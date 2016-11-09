@@ -1,0 +1,111 @@
+/* Custom Stylesheet */
+
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-wrapper > .contents {
+    flex: 1;
+}
+
+nav ul a,
+nav .brand-logo {
+    color: #444;
+}
+
+p {
+    line-height: 2rem;
+}
+
+/*Helper Functions*/
+.fw-100 {
+    font-weight: 100 !important;
+}
+
+.fw-300 {
+    font-weight: 300 !important;
+}
+
+.d-inline {
+    display: inline-block;
+}
+
+.button-collapse {
+    color: #26a69a;
+}
+
+.parallax-container {
+    min-height: 380px;
+    line-height: 0;
+    height: auto;
+    color: rgba(255, 255, 255, .9);
+}
+
+.parallax-container .section {
+    width: 100%;
+}
+
+.navbar-bookie .nav__search {
+    flex-grow: 2;
+    height: 50px;
+    padding-right: 2rem;
+}
+
+
+.navbar-bookie .nav__search i {
+    line-height: 50px;
+    height: 50px;
+}
+
+
+.navbar-bookie .nav__search input {
+    background-color: whitesmoke;
+    margin-bottom: 0;
+}
+
+.navbar-bookie .nav__search input:focus {
+    background-color: white;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
+}
+
+.navbar-bookie .brand-logo{
+    padding-right: 3rem;
+    position: static;
+}
+
+nav.navbar-bookie .nav-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+
+@media only screen and (max-width: 992px) {
+    .parallax-container .section {
+        position: absolute;
+        top: 40%;
+    }
+
+    #index-banner .section {
+        top: 10%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #index-banner .section {
+        top: 0;
+    }
+}
+
+.icon-block {
+    padding: 0 15px;
+}
+
+.icon-block .material-icons {
+    font-size: inherit;
+}
+
+footer.page-footer {
+    margin: 0;
+}
