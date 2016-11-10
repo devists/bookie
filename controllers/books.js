@@ -3,10 +3,11 @@
  */
 var express = require('express');
 var router = express.Router();
-var bookData = require('../data/books.json');
+var bookData = require('../data/books.js');
 
 router.get('/',function (req, res, next) {
-    res.json(bookData);
+    // res.json(bookData);
+    res.render('explore',{data:bookData})
 
 });
 

@@ -11,7 +11,7 @@ var users = require('./controllers/users');
 var test = require('./controllers/test');
 var books = require('./controllers/books');
 
-var db = require('./model/started');
+// var db = require('./model/started');
 
 var app = express();
 
