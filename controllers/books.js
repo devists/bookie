@@ -3,7 +3,13 @@
  */
 var express = require('express');
 var router = express.Router();
+var bodyParser = require('body-parser');
 var bookData = require('../data/books.js');
+
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));
 
 router.get('/', function (req, res, next) {
   // res.json(bookData);
@@ -12,7 +18,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-  res.json('Sucessfullly Added');
+  res.json(req.body);
   // res.render('explore',{data:bookData})
 
 });

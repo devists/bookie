@@ -14,7 +14,7 @@ gulp.task('nodemon', function (cb) {
         script: 'app.js',
 
         // watch core server file(s) that require server restart on change
-        watch: ['app.js','views/**/*.hbs'],
+        watch: ['app.js','views/**/*.hbs','controllers/**/*.js'],
         env: {
             'NODE_ENV': 'development',
             'DEBUG': 'appname:*'
