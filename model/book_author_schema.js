@@ -6,3 +6,5 @@ var book_author_schema = mongoose.Schema({
     isbn : Number,
     author : String
 });
+
+var book_author = mongoose.model('book_author', book_author_schema);
