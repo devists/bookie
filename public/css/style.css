@@ -1,5 +1,9 @@
 /* Custom Stylesheet */
 
+body {
+    background-color: whitesmoke;
+}
+
 .main-wrapper {
     display: flex;
     flex-direction: column;

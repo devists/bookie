@@ -5,14 +5,24 @@ var express = require('express');
 var router = express.Router();
 var bookData = require('../data/books.js');
 
-router.get('/',function (req, res, next) {
-    // res.json(bookData);
-    res.render('explore',{data:bookData})
+router.get('/', function (req, res, next) {
+  // res.json(bookData);
+  res.render('explore', {data: bookData})
 
 });
 
-router.get('/:id',function (req,res,next) {
-    // bookData.findBy
+router.post('/', function (req, res, next) {
+  res.json('Sucessfullly Added');
+  // res.render('explore',{data:bookData})
+
+});
+
+router.get('/new', function (req, res, next) {
+  res.render('addBook', {})
+});
+
+router.get('/:id', function (req, res, next) {
+  // bookData.findBy
 });
 
 
