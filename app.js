@@ -10,6 +10,8 @@ var index = require('./controllers/index');
 var users = require('./controllers/users');
 var test = require('./controllers/test');
 
+var db = require('./model/started');
+
 var app = express();
 
 // view engine setup
