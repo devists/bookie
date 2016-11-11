@@ -14,6 +14,7 @@ var requestable_book_schema = mongoose.Schema({
 });
 
 var requestable_book = mongoose.model('requestable_book', requestable_book_schema);
+/*
 
 var requestable_book1 = new requestable_book({
     isbn : 9789380658742,
@@ -32,5 +33,6 @@ requestable_book1.save(function(err, requestable_book){
     console.log('requestable_book table created');
 
 });
+*/
 
 module.exports = requestable_book;

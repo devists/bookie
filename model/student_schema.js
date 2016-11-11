@@ -17,7 +17,7 @@ var student_schema = mongoose.Schema({
 
 var student = mongoose.model('student', student_schema);
 
-var student1 = new student(
+/*var student1 = new student(
     {
         stud_id : 201552001,
         batch : 2015,
@@ -35,6 +35,6 @@ student1.save(function(err, student)
 {
    if (err) return console.error(err)
     console.log("student table created");
-});
+});*/
 
 module.exports = student;

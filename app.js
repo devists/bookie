@@ -5,13 +5,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var hbs= require('hbs');
+var db = require('./model/started');
 
 var index = require('./controllers/index');
 var users = require('./controllers/users');
 var test = require('./controllers/test');
 var books = require('./controllers/books');
 
-// var db = require('./model/started');
 
 var app = express();
 

@@ -11,6 +11,7 @@ var req_support_schema = mongoose.Schema ({
 
 var req_support = mongoose.model('req_support', req_support_schema);
 
+/*
 var req_support1 = new req_support({
     req_id : 777001,
     stud_id : 201451001,
@@ -22,5 +23,6 @@ req_support1.save(function(err,req_support)
     if (err) return console.log(err)
     console.log('req_support table created');
 });
+*/
 
 module.exports = req_support;
