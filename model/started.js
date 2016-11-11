@@ -17,7 +17,7 @@ mongoose.connect('mongodb://bookie:bookiedb1@ds149207.mlab.com:49207/bookie');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-    console.log("we are connected");
+    console.log("Remote MongoDb connected...");
 });
 
 module.exports = db;

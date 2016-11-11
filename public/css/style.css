@@ -25,6 +25,17 @@ p {
 
 /*Helper Functions*/
 
+.m-r-2x {
+    margin-right: 2rem;
+}
+
+.bold {
+    font-weight: bold;
+}
+.t-trans-c {
+    text-transform: capitalize;
+}
+
 .white-space {
     display: block;
     width: 100%;
@@ -85,21 +96,16 @@ p {
     width: 100%;
 }
 
-
-
-
 .navbar-bookie .nav__search {
     flex-grow: 2;
     height: 50px;
     padding-right: 2rem;
 }
 
-
 .navbar-bookie .nav__search i {
     line-height: 50px;
     height: 50px;
 }
-
 
 .navbar-bookie .nav__search input {
     background-color: whitesmoke;
@@ -108,21 +114,18 @@ p {
 
 .navbar-bookie .nav__search input:focus {
     background-color: white;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
-.navbar-bookie .brand-logo{
+.navbar-bookie .brand-logo {
     padding-right: 3rem;
     position: static;
 }
-
-
 
 nav.navbar-bookie .nav-wrapper {
     display: flex;
     align-items: center;
 }
-
 
 .card.book .card-footer {
     border-top: 1px solid rgba(158, 158, 158, 0.25);
@@ -131,15 +134,24 @@ nav.navbar-bookie .nav-wrapper {
     justify-content: space-between;
 }
 
-.card.book .card-footer .material-icons{
-   font-size: 1.45rem;
+.card.book .card-footer .material-icons, .book__rating .material-icons, .book__love .material-icons {
+    font-size: 1.45rem;
+    vertical-align: middle;
+    color: #26a69a;
 }
 
 .card.book .card-content .card-title {
     line-height: 1.3;
 }
 
+.rating-count, .love-count {
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
 
+.book-extras > div{
+    margin-bottom: 0.75rem;
+}
 
 @media only screen and (max-width: 992px) {
     .parallax-container .section {
