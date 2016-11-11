@@ -6,7 +6,7 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var bookData = require('../data/books.js');
 // var db = require('../data/books.js');
-var books =require('../model/booksden_book_schema');
+var books = require('../model/booksden_book_schema');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -15,13 +15,20 @@ router.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 router.get('/', function (req, res, next) {
   // res.json(bookData);
-  res.render('explore', {data: bookData})
+  books.find({}, function (err, data) {
+    if (err)
+      console.log(err);
+    else
+      res.render('explore', {data: data});
+      // res.send(data);
+  });
+  // res.render('explore', {data: bookData})
 
 });
 
 router.post('/', function (req, res, next) {
   var newBook = books(req.body);
-  newBook.save(function (err,table) {
+  newBook.save(function (err, table) {
     if (err)
       res.send(err);
     else
