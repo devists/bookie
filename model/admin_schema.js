@@ -15,7 +15,7 @@ var admin_schema = mongoose.Schema({
 });
 
 var admin = mongoose.model('admin', admin_schema);
-
+/*
 var admin1 = new admin(
     {
         admin_id : 101,
@@ -33,6 +33,6 @@ admin1.save(function(err, admin)
 {
     if (err) return console.error(err)
     console.log("admin table created");
-});
+});*/
 
 module.exports = admin;

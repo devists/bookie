@@ -11,7 +11,7 @@ var books_feedback_schema = mongoose.Schema({
 
 var books_feedback = mongoose.model('books_feedback', books_feedback_schema);
 
-var books_feedback1 = new books_feedback({
+/*var books_feedback1 = new books_feedback({
     isbn : 9780132990448,
     stud_id : 201552001,
     rating : 3,
@@ -24,6 +24,6 @@ books_feedback1.save(function(err, books_feedback)
     if (err) return console.error('err')
     console.log('books_feedback table created')
 
-});
+});*/
 
 module.exports = books_feedback;

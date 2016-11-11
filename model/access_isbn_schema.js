@@ -11,7 +11,7 @@ var access_isbn_schema = mongoose.Schema ({
 
 var access_isbn = mongoose.model('access_isbn', access_isbn_schema);
 
-var access = new access_isbn({
+/*var access = new access_isbn({
     accession_no : 9780132990448,
     isbn : 1001
 });
@@ -23,6 +23,6 @@ access.save(function(err, access)
     if (err) return console.error('err')
     console.log('access_isbn created')
 
-});
+});*/
 
 module.exports = access_isbn;
