@@ -12,6 +12,8 @@ var users = require('./controllers/users');
 var test = require('./controllers/test');
 var books = require('./controllers/books');
 
+var bookData = require('./data/books');
+// bookData(10);
 
 var app = express();
 

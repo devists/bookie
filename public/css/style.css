@@ -135,6 +135,10 @@ nav.navbar-bookie .nav-wrapper {
    font-size: 1.45rem;
 }
 
+.card.book .card-content .card-title {
+    line-height: 1.3;
+}
+
 
 
 @media only screen and (max-width: 992px) {
