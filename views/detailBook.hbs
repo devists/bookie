@@ -1,0 +1,62 @@
+<div class="white-space space-md"></div>
+<div class="container row">
+    <div class="col s12 m10 offset-m1 l8 offset-l2 white">
+        <div class="row">
+            <div class="col s10 offset-s1">
+                <div class="white-space space-md clearfix"></div>
+                <h4 class="t-trans-c color-primary"> {{data.title}}</h4>
+                <div class="book__meta">
+                    <div class="book__author grey-text">by {{data.author}}</div>
+                    <div class="book__pdate grey-text">{{formatDate data.p_date}}</div>
+                </div>
+                <div class="white-space space-xm"></div>
+                <div class="book-rate-love">
+                    <span class="book__rating m-r-2x">
+                        <i class="material-icons">star</i>
+                        <i class="material-icons">star</i>
+                        <i class="material-icons">star</i>
+                        <i class="material-icons">star</i>
+                        <i class="material-icons">star_half</i>
+                        <span class="rating-count">2014</span>
+                    </span>
+                    <span class="book__love">
+                        <i class="material-icons">favorite_border</i>
+                        <span class="love-count">221</span>
+                    </span>
+                </div>
+                <div class="white-space space-xm"></div>
+                <div class="desc">
+                    <p>{{data.desc}}</p>
+                </div>
+                <div class="book-extras row">
+                    <div class="col s4">
+                        <div class="bold grey-text text-darken-2">Publisher</div>
+                        <div class="grey-text text-darken-3">{{data.publisher}}</div>
+                    </div>
+                    <div class="col s4">
+                        <div class="bold grey-text text-darken-2">Publish Date</div>
+                        <div class="grey-text text-darken-3">{{formatDate data.p_date}}</div>
+                    </div>
+                    <div class="col s4">
+                        <div class="bold grey-text text-darken-2">Edition</div>
+                        <div class="grey-text text-darken-3">{{ data.edition}}</div>
+                    </div>
+                    <div class="col s4">
+                        <div class="bold grey-text text-darken-2">ISBN</div>
+                        <div class="grey-text text-darken-3">{{ data.isbn}}</div>
+                    </div>
+                    <div class="col s4">
+                        <div class="bold grey-text text-darken-2">Language</div>
+                        <div class="grey-text text-darken-3">{{ data.lang}}</div>
+                    </div>
+                    <div class="col sm4">
+                        <div class="bold grey-text text-darken-2">Pages</div>
+                        <div class="grey-text text-darken-3">{{ data.pages}}</div>
+                    </div>
+                </div>
+                <div class="white-space space-sm clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="white-space space-md"></div>

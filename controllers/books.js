@@ -102,7 +102,7 @@ router.get('/:id', function (req, res, next) {
     if (err)
       res.send(err);
     else
-      res.send(data);
+      res.render('detailBook',{data:data});
   });
 });
 
