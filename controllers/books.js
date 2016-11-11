@@ -2,6 +2,7 @@
  * Created by ansarimofid on 10/11/16.
  */
 var express = require('express');
+var mongoose = require('mongoose');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var bookData = require('../data/books.js');
@@ -21,9 +22,31 @@ router.get('/', function (req, res, next) {
     if (err)
       console.log(err);
     else
-      res.render('explore', {data: data});
+      res.render('explore', {'action': 'browse',data: data,'resLength':data.length});
   });
 
+});
+
+
+/**
+ * Search Redirect
+ */
+router.get('/search', function (req, res, next) {
+  var query = req.query.search;
+  res.redirect('/books/search/'+query);
+});
+
+/**
+ * Search Books and Render Page
+ */
+router.get('/search/:queryString', function (req, res, next) {
+  var query = req.params.queryString;
+  books.find({$text: {$search: query}},function (err, result) {
+    if (err)
+      res.send(err);
+
+    res.render('explore', {'action': 'search','query':query,'data':result,'resLength':result.length})
+  });
 });
 
 /**
@@ -97,7 +120,7 @@ router.get('/delete/:id', function (req, res, next) {
  * Views detail of the book
  */
 router.get('/:id', function (req, res, next) {
-  var id = req.params.id;
+  var id = mongoose.Types.ObjectId(req.params.id);
   books.findOne({_id: id}, function (err, data) {
     if (err)
       res.send(err);

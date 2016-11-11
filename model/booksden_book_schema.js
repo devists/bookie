@@ -16,6 +16,8 @@ var booksden_book_schema = mongoose.Schema({
   desc:String
 });
 
+booksden_book_schema.index({'$**':'text'});
+
 var books = mongoose.model('books', booksden_book_schema);
 
 /*var booksden1 = new booksden({
