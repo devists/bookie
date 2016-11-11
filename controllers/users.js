@@ -13,10 +13,21 @@ router.get('/login', function (req, res, next) {
 });
 
 router.post('/login', function (req, res, next) {
-    res.render('login', {})
-    res.send('successfully login');
+    console.log(req.body);
+    student.findOne({username: req.body.username}, function(err, logindata) {
+        if (err)
+            console.log(err);
+        else if (req.body.username === logindata.username  &&  req.body.password === logindata.password) {
+            res.send('successfully login');
+            console.log("successfully login");
+            //console.log(logindata.password);
+        }
+        else
+            console.log('invalid username or password');
+            //console.log(logindata.password);
+    });
+    //res.render('login', {})
 });
-
 
 router.get('/register', function (req, res, next) {
     res.render('register', {})
@@ -30,7 +41,6 @@ router.post('/', function (req, res, next){
         if (err)
             console.log(err)
         else
-            res.send('successfuly added user');
             res.render('login', {})
         //console.log("successfully register");
     });
