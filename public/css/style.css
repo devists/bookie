@@ -25,6 +25,10 @@ p {
 
 /*Helper Functions*/
 
+.t-trans-c {
+    text-transform: capitalize;
+}
+
 .white-space {
     display: block;
     width: 100%;

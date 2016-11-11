@@ -14,15 +14,12 @@ router.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 
 router.get('/', function (req, res, next) {
-  // res.json(bookData);
   books.find({}, function (err, data) {
     if (err)
       console.log(err);
     else
       res.render('explore', {data: data});
-      // res.send(data);
   });
-  // res.render('explore', {data: bookData})
 
 });
 
@@ -39,12 +36,49 @@ router.post('/', function (req, res, next) {
 
 });
 
-router.get('/new', function (req, res, next) {
-  res.render('addBook', {})
+router.get('/add', function (req, res, next) {
+  res.render('viewBook', {'action': 'add'})
+});
+
+
+router.get('/edit/:id', function (req, res, next) {
+  var id = req.params.id;
+
+  // res.send(id);
+  books.findOne({_id: id}, function (err, data) {
+    if (err)
+      res.send(err);
+
+    res.render('viewBook', {'action': 'edit','data':data})
+  });
+});
+
+
+router.post('/edit/save/:id', function (req, res, next) {
+  var id = req.params.id;
+
+  books.findById(id, function (err, bookData) {
+    if (err)
+      res.send(err);
+    bookData.update(req.body,function (err) {
+      if (err)
+        res.send(err);
+      else
+        res.send("Successfully Edited");
+    });
+  });
+
 });
 
 router.get('/:id', function (req, res, next) {
-  // bookData.findBy
+  var id = req.params.id;
+  // res.send(req.params.id);
+  books.findOne({_id: id}, function (err, data) {
+    if (err)
+      res.send(err);
+    else
+      res.send(data);
+  });
 });
 
 
