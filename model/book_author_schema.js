@@ -19,6 +19,7 @@ book_author1.save(function(err, book_author){
     console.log('book_author table created');
 
 });*/
+/*
 
 var book_author2 = new book_author({
     isbn : 9781449325947,
@@ -63,5 +64,6 @@ book_author5.save(function(err, book_author){
     console.log('book_author table created');
 
 });
+*/
 
 module.exports = book_author;

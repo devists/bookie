@@ -57,7 +57,6 @@ hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerHelper('formatDate', function (date) {
   var months = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   date = new Date(date);
-  console.log(date);
   return months[date.getMonth()+1]+', '+date.getFullYear() ;
 });
 
