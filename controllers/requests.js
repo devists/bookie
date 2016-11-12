@@ -6,22 +6,29 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var books = require('../model/booksden_book_schema');
 var requests = require('../model/book_request_schema');
+var mongoose = require('mongoose');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
 
+/**
+ * Lists all the requested books
+ */
 router.get('/', function (req, res, next) {
-  books.find({public:false}, function (err, data) {
+  books.find({public: false}, function (err, data) {
     if (err)
       console.log(err);
     else
-      res.render('explore', {action: 'browse',data: data,resLength:data.length,viewUrl:'reqests'});
+      res.render('explore', {action: 'browse', data: data, resLength: data.length, viewUrl: 'requests'});
   });
 
 });
 
+/**
+ * Adds requested book
+ */
 router.post('/', function (req, res) {
   var reqData = req.body;
   reqData.public = 0;
@@ -30,16 +37,61 @@ router.post('/', function (req, res) {
     if (err)
       res.send(err);
     else {
-      res.send(book._id);
+      var bookReq = {};
+      bookReq.book_id = book._id;
+      bookReq.opened_by = 'Mofid';
+      bookReq.closed_by = 'Anil';
+
+      var newRequest = requests(bookReq);
+      newRequest.save(function (err, data) {
+        if (err)
+          res.send(err);
+
+        res.send(data);
+      });
     }
-    // res.send("Successfully Added");
   });
 });
 
-
+/**
+ * Adds new requested books
+ */
 router.get('/add', function (req, res, next) {
   res.render('viewBook', {'action': 'add', submitUrl: 'requests'})
 });
 
+/**
+ * Deletes existing Request and corresponding book data
+ */
+router.get('/delete/:id', function (req, res, next) {
+  var id = req.params.id;
+
+  requests.remove({book_id: id}, function (err, data) {
+    if (err)
+      res.send(err);
+
+    else {
+      books.remove({_id: id}, function (err, data) {
+        if (err)
+          res.send(err);
+
+        res.send("Successfully Deleted Request");
+      });
+    }
+  });
+});
+
+/**
+ * Views detail of requested books
+ */
+router.get('/:id', function (req, res, next) {
+  var id = mongoose.Types.ObjectId(req.params.id);
+  books.findOne({_id: id}, function (err, data) {
+    if (err)
+      res.send(err);
+    else
+      res.render('detailBook', {data: data});
+  });
+});
 
 module.exports = router;
