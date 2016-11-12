@@ -5,7 +5,7 @@
             <div class="white-space space-md clearfix"></div>
             <h4 class="col s10 offset-s1 t-trans-c"> {{action}} Book</h4>
             <div class="white-space space-sm clearfix"></div>
-            <form method="POST" action="/books{{#ifCond action 'edit' }}/edit/save/{{data._id}}{{/ifCond}}" class="col s10 offset-s1">
+            <form method="POST" action="/{{submitUrl}}{{#ifCond action 'edit' }}/edit/save/{{data._id}}{{/ifCond}}" class="col s10 offset-s1">
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="title" name="title" type="text" class="validate"

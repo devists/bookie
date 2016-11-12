@@ -13,7 +13,8 @@ var booksden_book_schema = mongoose.Schema({
   pages: Number,
   edited_by: Number,
   author:String,
-  desc:String
+  desc:String,
+  public:Boolean
 });
 
 booksden_book_schema.index({'$**':'text'});

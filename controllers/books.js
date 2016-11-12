@@ -18,11 +18,11 @@ router.use(bodyParser.urlencoded({     // to support URL-encoded bodies
  * Renders all Book list
  */
 router.get('/', function (req, res, next) {
-  books.find({}, function (err, data) {
+  books.find({public: true}, function (err, data) {
     if (err)
       console.log(err);
     else
-      res.render('explore', {'action': 'browse',data: data,'resLength':data.length});
+      res.render('explore', {'action': 'browse', data: data, 'resLength': data.length, viewUrl: 'books'});
   });
 
 });
@@ -33,7 +33,7 @@ router.get('/', function (req, res, next) {
  */
 router.get('/search', function (req, res, next) {
   var query = req.query.search;
-  res.redirect('/books/search/'+query);
+  res.redirect('/books/search/' + query);
 });
 
 /**
@@ -41,11 +41,11 @@ router.get('/search', function (req, res, next) {
  */
 router.get('/search/:queryString', function (req, res, next) {
   var query = req.params.queryString;
-  books.find({$text: {$search: query}},function (err, result) {
+  books.find({$text: {$search: query}}, function (err, result) {
     if (err)
       res.send(err);
 
-    res.render('explore', {'action': 'search','query':query,'data':result,'resLength':result.length})
+    res.render('explore', {'action': 'search', 'query': query, 'data': result, 'resLength': result.length})
   });
 });
 
@@ -53,7 +53,9 @@ router.get('/search/:queryString', function (req, res, next) {
  * Adds Book to databse
  */
 router.post('/', function (req, res, next) {
-  var newBook = books(req.body);
+  var reqData = req.body;
+  reqData.public = 1;
+  var newBook = books(reqData);
   newBook.save(function (err, table) {
     if (err)
       res.send(err);
@@ -66,7 +68,7 @@ router.post('/', function (req, res, next) {
  * Renders add Book form
  */
 router.get('/add', function (req, res, next) {
-  res.render('viewBook', {'action': 'add'})
+  res.render('viewBook', {'action': 'add', submitUrl: 'books'})
 });
 
 /**
@@ -125,7 +127,7 @@ router.get('/:id', function (req, res, next) {
     if (err)
       res.send(err);
     else
-      res.render('detailBook',{data:data});
+      res.render('detailBook', {data: data});
   });
 });
 
