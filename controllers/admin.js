@@ -45,8 +45,6 @@ router.post('/login', function (req, res, next) {
       console.log(err);
     else if (req.body.username === loginData.username && req.body.password === loginData.password) {
       req.session.userData = loginData;
-      res.locals.session = loginData;
-      console.log(res.locals.session);
       res.send('successfully login');
       console.log("successfully login");
     }

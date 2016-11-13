@@ -41,7 +41,11 @@
                 <ul class="right hide-on-med-and-down d-inline">
                     <li><a href="/books">Explore</a></li>
                     <li><a href="/requests">All Requests</a></li>
-                    <li><a class="btn waves-effect waves-light" href="/requests/add">New Request</a></li>
+                    {{#if session.stud_id}}
+                        <li><a class="btn waves-effect waves-light" href="/requests/add">New Request</a></li>
+                        {{else if session}}
+                        <li><a class="btn waves-effect waves-light" href="/books/add">Add Book</a></li>
+                    {{/if}}
                     {{#if session}}
                         <li><a class="dropdown-button-below-origin" href="#!" data-activates="user-data">{{session.username}}
                             <i
