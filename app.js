@@ -12,6 +12,7 @@ var users = require('./controllers/users');
 var test = require('./controllers/test');
 var books = require('./controllers/books');
 var requests = require('./controllers/requests');
+var admin = require('./controllers/admin');
 
 var bookData = require('./data/books');
 // bookData(10);
@@ -35,6 +36,7 @@ app.use('/users', users);
 app.use('/test', test);
 app.use('/books', books);
 app.use('/requests', requests);
+app.use('/admin', admin);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
