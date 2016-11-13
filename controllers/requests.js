@@ -9,6 +9,7 @@ var requests = require('../model/book_request_schema');
 var reqSupport = require('../model/req_support_schema');
 var mongoose = require('mongoose');
 var session = require('express-session');
+var helpers = require('./functions.helpers');
 
 var expressOptions = {
   secret: "secret",
@@ -73,7 +74,7 @@ router.post('/', function (req, res) {
         if (err)
           res.send(err);
 
-        res.send(data);
+        res.redirect('/books/' + data._id);
       });
     }
   });
@@ -107,18 +108,29 @@ router.get('/delete/:id', function (req, res, next) {
   });
 });
 
-router.get('/support/:id', function (req, res) {
-  var bookId = req.params.id;
-  var studId = req.session.userData._id;
-  // var reqData = req.body;
-  // reqData.public = 0;
-  var newSupport = reqSupport({book_id:bookId, stud_id:studId});
-  newSupport.save(function (err, supp) {
-    if (err)
-      res.json({status:0,err:err});
-    else {
-      res.json({status:1});
-    }
+router.post('/support/:id', function (req, res) {
+  if (!req.session.userData._id)
+    res.json({'status': 0});
+  else {
+    var bookId = req.params.id;
+    var studId = req.session.userData._id;
+    // var reqData = req.body;
+    // reqData.public = 0;
+    var newSupport = reqSupport({book_id: bookId, stud_id: studId});
+    newSupport.save(function (err, supp) {
+      if (err)
+        res.json({status: 0, err: err});
+      else {
+        res.json({status: 1});
+      }
+    });
+  }
+});
+
+router.get('/support', function (req, res) {
+
+  helpers.getSupportCount(function (data) {
+    res.json({suppData: data});
   });
 });
 

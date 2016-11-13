@@ -135,7 +135,7 @@ nav.navbar-bookie .nav-wrapper {
     justify-content: space-between;
 }
 
-.card.book .card-footer .material-icons, .book__rating .material-icons, .book__love .material-icons {
+.card.book .card-footer .material-icons, .book__rating .material-icons {
     font-size: 1.45rem;
     vertical-align: middle;
     color: #26a69a;

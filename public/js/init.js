@@ -11,14 +11,16 @@
     picker.set('max', true);
   }); // end of document ready
 
+
   $('.book__support .material-icons').click(function (e) {
     e.preventDefault();
     var $this = $(this);
     var cardFooter = $this.closest('.card-footer');
     var id = cardFooter.closest('.card-footer').data('id');
     console.log(id);
-    $.get('/requests/support/' + id, function (data) {
+    $.post('/requests/support/' + id, function (data) {
 
+      console.log(data.status);
       if (!data.status) {
         console.log("Some error occurred");
         return;
@@ -28,5 +30,24 @@
       cardFooter.find('.book__support span').text(parseInt(supportCount) + 1);
       $this.unbind();
     })
-  })
+  });
+
+  function addCount() {
+    var cardFooter = $('.card.book .card-footer');
+
+    $.get('/requests/support/', function (suppData) {
+      console.log(suppData['suppData']);
+      cardFooter.each(function () {
+        var $this = $(this);
+        var id = $this.data('id');
+        if (suppData['suppData'][id]) {
+          console.log(id);
+          $this.find('.book__support span').text(suppData['suppData'][id]);
+        }
+      })
+    })
+  }
+
+  addCount();
+
 })(jQuery); // end of jQuery name space

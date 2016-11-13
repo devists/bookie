@@ -7,8 +7,8 @@ var Books = require('./booksden_book_schema');
 var mongoose = require('mongoose');
 var book_request_schema = mongoose.Schema({
     book_id : [{type: mongoose.Schema.Types.ObjectId, ref: 'Books'}],
-    opened_by : Number,
-    closed_by : Number
+    opened_by : String,
+    closed_by : String
 });
 
 var book_request = mongoose.model('book_request', book_request_schema);
