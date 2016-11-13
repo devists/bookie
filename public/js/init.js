@@ -3,6 +3,9 @@
 
     $('.button-collapse').sideNav();
     $('.parallax').parallax();
+    $('.dropdown-button-below-origin').dropdown({
+      belowOrigin:true
+    });
     var input = $('.datepicker').pickadate();
     var picker = input.pickadate('picker');
     picker.set('max', true);

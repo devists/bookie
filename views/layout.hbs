@@ -15,6 +15,18 @@
 <div class="main-wrapper">
     <!--Header-->
     <header class="navbar-fixed">
+
+        <!--Dropdown data-->
+
+        {{#if session}}
+            <ul id="user-data" class="dropdown-content">
+                <li><a href="#!">Settings</a></li>
+                <li><a href="#!">Favourite List</a></li>
+                <li class="divider">Requested Book</li>
+                <li><a href="/users/logout">Logout</a></li>
+            </ul>
+        {{/if}}
+
         <nav class="white navbar-bookie">
             <div class="nav-wrapper container">
                 <a href="/" class="brand-logo fw-100">Bookie</a>
@@ -30,6 +42,14 @@
                     <li><a href="/books">Explore</a></li>
                     <li><a href="/requests">All Requests</a></li>
                     <li><a class="btn waves-effect waves-light" href="/requests/add">New Request</a></li>
+                    {{#if session}}
+                        <li><a class="dropdown-button-below-origin" href="#!" data-activates="user-data">{{session.username}}
+                            <i
+                                    class="material-icons left">account_circle</i></a></li>
+                    {{else}}
+                        <li><a href="/users/login">Login
+                            <i class="material-icons left">account_circle</i></a></li>
+                    {{/if}}
                 </ul>
             </div>
         </nav>

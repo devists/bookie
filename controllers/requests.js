@@ -7,6 +7,25 @@ var bodyParser = require('body-parser');
 var books = require('../model/booksden_book_schema');
 var requests = require('../model/book_request_schema');
 var mongoose = require('mongoose');
+var session = require('express-session');
+
+var expressOptions = {
+  secret: "secret",
+  saveUninitialized:false,
+  resave:true
+};
+
+router.use(session(expressOptions));
+
+/**
+ * Middleware to store local login data
+ */
+router.use(function (req, res, next) {
+  res.locals.session = req.session.userData;
+  console.log(res.locals.session);
+  next();
+});
+
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({     // to support URL-encoded bodies

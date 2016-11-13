@@ -69,4 +69,8 @@ hbs.registerHelper('ifCond', function(v1, v2, options) {
   return options.inverse(this);
 });
 
+hbs.registerHelper('consoleData', function(data) {
+  console.log(data);
+});
+
 module.exports = app;

@@ -12,6 +12,15 @@ var expressOptions = {
 
 router.use(session(expressOptions));
 
+/**
+ * Middleware to store local login data
+ */
+router.use(function (req, res, next) {
+  res.locals.session = req.session.userData;
+  console.log(res.locals.session);
+  next();
+});
+
 router.get('/test',function (req,res) {
 
   res.send(req.session);
@@ -42,7 +51,8 @@ router.post('/login', function (req, res, next) {
       console.log(err);
     else if (req.body.username === loginData.username && req.body.password === loginData.password) {
       req.session.userData = loginData;
-      console.log(loginData);
+      res.locals.session = loginData;
+      console.log(res.locals.session);
       res.send('successfully login');
       console.log("successfully login");
     }
