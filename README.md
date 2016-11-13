@@ -25,7 +25,8 @@ Bookie is Web-based app which showcases list of total books available in the lib
 
 ##### Todos
 
- - initialize project.
+ - project in progress.
+ - You can see here [link]
 
    [node.js]: <http://nodejs.org>
- 
+   [link]: <https://bookie-devists.herokuapp.com/>

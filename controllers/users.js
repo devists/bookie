@@ -51,12 +51,47 @@ router.post('/login', function (req, res, next) {
     }
     else
       console.log('invalid username or password');
+      //res.redirect('/users/login')
+      //res.render('/users/login', {})
   });
 });
 
 router.get('/register', function (req, res, next) {
-  res.render('register', {user:'student', submitUrl:'users'})
+  res.render('register', {user:'student', submitUrl:'users', action : 'register'})
 });
+
+router.get('/settings', function (req, res, next) {
+    if (!req.session.userData._id)
+        res.redirect('/users/login');
+    else
+        var id = req.session.userData._id;
+
+        student.findOne({_id: id}, function (err, data) {
+            if (err)
+                res.send(err);
+
+            res.render('register', {'action': 'edit', 'data': data, user : 'student', submitUrl : 'users'})
+            console.log(data);
+    });
+});
+
+router.post('/settings/save', function (req, res, next) {
+    var id = req.session.userData._id;
+
+    student.findById(id, function (err, studentData) {
+        if (err)
+            res.send(err);
+        else
+            studentData.update(req.body, function (err) {
+                if (err)
+                    res.send(err);
+                else
+                    res.send("Successfully Edited");
+            });
+    });
+
+});
+
 
 router.post('/', function (req, res, next) {
   //res.send('successfully register');
