@@ -1,12 +1,15 @@
 <div class="white-space space-md"></div>
 <div class="books-cards container">
     <div class="row">
-
         {{#ifCond action 'search' }}
-            <h5 class="center fw-300">Showing <span class="color-primary">{{resLength}}</span> Results for <span class="color-primary">'{{query}}'</span></h5>
+            <h5 class="center fw-300">Showing <span class="color-primary">{{resLength}}</span> Results for <span
+                    class="color-primary">'{{query}}'</span></h5>
         {{/ifCond}}
         {{#ifCond action 'browse' }}
             <h5 class="center fw-300">Browsing <span class="color-primary">{{resLength}}</span> Results</h5>
+        {{/ifCond}}
+        {{#ifCond action 'requests' }}
+            <h5 class="center fw-300">Browsing <span class="color-primary">{{resLength}}</span> Requested Books</h5>
         {{/ifCond}}
 
         <div class="space space-xm"></div>
@@ -27,15 +30,26 @@
                         </div>
                     </div>
                     <div class="card-footer color-primary">
-                        <div class="book__rating">
-                            <i class="material-icons">star</i>
-                            <i class="material-icons">star</i>
-                            <i class="material-icons">star</i>
-                            <i class="material-icons">star</i>
-                            <i class="material-icons">star_half</i>
-                        </div>
+                        {{#if ../type }}
+                            <div class="book__support">
+                                <i class="material-icons">thumb_up</i>
+                                <span class="grey-text">
+                                52
+                            </span>
+                            </div>
+                        {{else}}
+                            <div class="book__rating">
+                                <i class="material-icons">star</i>
+                                <i class="material-icons">star</i>
+                                <i class="material-icons">star</i>
+                                <i class="material-icons">star</i>
+                                <i class="material-icons">star_half</i>
+                                <span class="grey-text">3.5</span>
+                            </div>
+                        {{/if}}
                         <div class="book__love">
                             <i class="material-icons">favorite_border</i>
+                            <span class="grey-text">214</span>
                         </div>
                     </div>
                 </div>

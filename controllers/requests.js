@@ -11,8 +11,8 @@ var session = require('express-session');
 
 var expressOptions = {
   secret: "secret",
-  saveUninitialized:false,
-  resave:true
+  saveUninitialized: false,
+  resave: true
 };
 
 router.use(session(expressOptions));
@@ -40,7 +40,13 @@ router.get('/', function (req, res, next) {
     if (err)
       console.log(err);
     else
-      res.render('explore', {action: 'browse', data: data, resLength: data.length, viewUrl: 'requests'});
+      res.render('explore', {
+        action: 'browse',
+        type: 'requests',
+        data: data,
+        resLength: data.length,
+        viewUrl: 'requests'
+      });
   });
 
 });
@@ -112,5 +118,7 @@ router.get('/:id', function (req, res, next) {
       res.render('detailBook', {data: data});
   });
 });
+
+router.
 
 module.exports = router;
