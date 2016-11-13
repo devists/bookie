@@ -63,7 +63,7 @@ router.get('/search/:queryString', function (req, res, next) {
     if (err)
       res.send(err);
 
-    res.render('explore', {'action': 'search', 'query': query, 'data': result, 'resLength': result.length})
+    res.render('explore', {'action': 'search', 'query': query, 'data': result, 'resLength': result.length,viewUrl: 'books'})
   });
 });
 
