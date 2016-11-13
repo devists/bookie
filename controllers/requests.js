@@ -6,6 +6,7 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var books = require('../model/booksden_book_schema');
 var requests = require('../model/book_request_schema');
+var reqSupport = require('../model/req_support_schema');
 var mongoose = require('mongoose');
 var session = require('express-session');
 
@@ -64,7 +65,7 @@ router.post('/', function (req, res) {
     else {
       var bookReq = {};
       bookReq.book_id = book._id;
-      bookReq.opened_by = 'Mofid';
+      bookReq.opened_by = req.session.userData._id;
       bookReq.closed_by = 'Anil';
 
       var newRequest = requests(bookReq);
@@ -106,6 +107,21 @@ router.get('/delete/:id', function (req, res, next) {
   });
 });
 
+router.get('/support/:id', function (req, res) {
+  var bookId = req.params.id;
+  var studId = req.session.userData._id;
+  // var reqData = req.body;
+  // reqData.public = 0;
+  var newSupport = reqSupport({book_id:bookId, stud_id:studId});
+  newSupport.save(function (err, supp) {
+    if (err)
+      res.json({status:0,err:err});
+    else {
+      res.json({status:1});
+    }
+  });
+});
+
 /**
  * Views detail of requested books
  */
@@ -118,7 +134,5 @@ router.get('/:id', function (req, res, next) {
       res.render('detailBook', {data: data});
   });
 });
-
-router.
 
 module.exports = router;

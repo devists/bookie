@@ -154,6 +154,10 @@ nav.navbar-bookie .nav-wrapper {
     margin-bottom: 0.75rem;
 }
 
+.book__support .material-icons {
+    cursor: pointer;
+}
+
 @media only screen and (max-width: 992px) {
     .parallax-container .section {
         position: absolute;
