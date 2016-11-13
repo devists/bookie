@@ -17,7 +17,6 @@ router.use(session(expressOptions));
  */
 router.use(function (req, res, next) {
   res.locals.session = req.session.userData;
-  console.log(res.locals.session);
   next();
 });
 
@@ -36,7 +35,6 @@ router.get('/logout',function (req,res) {
     if (err)
       res.send(err);
 
-    //res.send("Logout Successfully");
     res.redirect('/books');
   })
 });
@@ -47,9 +45,7 @@ router.post('/login', function (req, res, next) {
       console.log(err);
     else if (req.body.username === loginData.username && req.body.password === loginData.password) {
       req.session.userData = loginData;
-      res.locals.session = loginData;
-      //console.log(res.locals.session);
-      //res.send('successfully login');
+      // res.locals.userType = 'student';
       res.redirect('/books');
       console.log("successfully login");
     }
@@ -99,7 +95,7 @@ router.post('/settings/save', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
   //res.send('successfully register');
-  console.log(req.body);
+  // console.log(req.body);
   var newStudent = student(req.body);
   newStudent.save(function (err, newtable) {
     if (err)
