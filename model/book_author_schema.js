@@ -3,7 +3,7 @@
  */
 var mongoose = require('mongoose');
 var book_author_schema = mongoose.Schema({
-    isbn : Number,
+    isbn : { type : Number, unique : true },
     author : String
 });
 

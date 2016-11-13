@@ -7,8 +7,8 @@ var admin_schema = mongoose.Schema({
     lname : String,
     dob : Date,
     gender : String,
-    email : String,
-    username : String,
+    email : { type : String, unique : true },
+    username : { type : String, unique : true },
     password : String
 });
 
