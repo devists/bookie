@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 //var bodyParser = require('body-parser');
-var student = require('../model/student_schema');
+var admin = require('../model/admin_schema');
 var session = require('express-session');
 
 var expressOptions = {
@@ -17,7 +17,6 @@ router.use(session(expressOptions));
  */
 router.use(function (req, res, next) {
   res.locals.session = req.session.userData;
-  console.log(res.locals.session);
   next();
 });
 
@@ -28,7 +27,7 @@ router.get('/test',function (req,res) {
 });
 
 router.get('/login', function (req, res, next) {
-  res.render('login',  {user:'student', submitUrl:'users'})
+  res.render('login', {user:'admin', submitUrl:'admin'})
 });
 
 router.get('/logout',function (req,res) {
@@ -36,21 +35,19 @@ router.get('/logout',function (req,res) {
     if (err)
       res.send(err);
 
-    //res.send("Logout Successfully");
-    res.redirect('/books');
+    res.send("Logout Successfully");
   })
 });
 
 router.post('/login', function (req, res, next) {
-  student.findOne({username: req.body.username}, function (err, loginData) {
+  admin.findOne({username: req.body.username}, function (err, loginData) {
     if (err)
       console.log(err);
     else if (req.body.username === loginData.username && req.body.password === loginData.password) {
       req.session.userData = loginData;
       res.locals.session = loginData;
-      //console.log(res.locals.session);
-      //res.send('successfully login');
-      res.redirect('/books');
+      console.log(res.locals.session);
+      res.send('successfully login');
       console.log("successfully login");
     }
     else
@@ -59,20 +56,19 @@ router.post('/login', function (req, res, next) {
 });
 
 router.get('/register', function (req, res, next) {
-  res.render('register', {user:'student', submitUrl:'users'})
+  res.render('register', {user:'admin', submitUrl:'admin'})
 });
 
 router.post('/', function (req, res, next) {
-  //res.send('successfully register');
+  // res.send('successfully register');
   console.log(req.body);
-  var newStudent = student(req.body);
-  newStudent.save(function (err, newtable) {
+  var newAdmin = admin(req.body);
+  newAdmin.save(function (err, data) {
+
     if (err)
-      console.log(err);
+      res.send(err);
     else
       res.render('login', {});
-      res.redirect('/users/login')
-    //console.log("successfully register");
   });
 });
 

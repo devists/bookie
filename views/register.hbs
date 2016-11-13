@@ -3,55 +3,61 @@
     <div class="col s12 m10 offset-m1 l8 offset-l2 white">
         <div class="row">
             <div class="white-space space-md clearfix"></div>
-            <h4 class="col s10 offset-s1">Student Registeration</h4>
+            <h4 class="col s10 offset-s1 t-trans-c">{{user}} Registration</h4>
             <div class="white-space space-sm clearfix"></div>
-            <form method="POST" action="/users" class="col s10 offset-s1">
+            <form method="POST" action="/{{submitUrl}}" class="col s10 offset-s1">
                 <div class="row">
-                    <div class="input-field col s12">
-                        <input id="stud_id" name="stud_id" type="number" class="validate" required>
-                        <label for="stud_id">Student Id</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="batch" name="batch" type="text" class="validate" required>
-                        <label for="batch">Batch</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s4">
-                        <input name="branch" id="branch" type="text" class="validate" required>
-                        <label for="branch">Branch</label>
-                    </div>
-                    <div class="input-field col s4">
+                    <div class="input-field col s6">
                         <input name="fname" id="fname" type="text" class="validate" required>
                         <label for="fname">First Name</label>
                     </div>
-                    <div class="input-field col s4">
+                    <div class="input-field col s6">
                         <input name="lname" id="lname" type="text" class="validate" required>
                         <label for="lname">Last Name</label>
                     </div>
                 </div>
+                {{#ifCond user 'student' }}
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="stud_id" name="stud_id" type="number" class="validate" required>
+                            <label for="stud_id">Student Id</label>
+                        </div>
+                    </div>
+                {{/ifCond}}
                 <div class="row">
-                    <div class="input-field col s4">
+                    <div class="input-field col s12">
+                        <input id="email" name="email" type="email" class="validate" required>
+                        <label for="email">Email</label>
+                    </div>
+                </div>
+                {{#ifCond user 'student' }}
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="batch" name="batch" type="text" class="validate" required>
+                            <label for="batch">Batch</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input name="branch" id="branch" type="text" class="validate" required>
+                            <label for="branch">Branch</label>
+                        </div>
+                    </div>
+                {{/ifCond}}
+                <div class="row">
+                    <div class="input-field col s6">
                         <input id="dob" name="dob" type="date" class="datepicker validate" required>
                         <label for="dob">DOB</label>
                     </div>
-                    <div class="input-field col s4">
+                    <div class="input-field col s6">
                         <input id="gender" name="gender" type="text" class="validate" required>
                         <label for="gender">Gender</label>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s4">
-                        <input id="email" name="email" type="text" class="validate" required>
-                        <label for="email">Email</label>
-                    </div>
-                    <div class="input-field col s4">
+                    <div class="input-field col s6">
                         <input id="username" name="username" type="text" class="validate" required>
                         <label for="username">Username</label>
                     </div>
-                    <div class="input-field col s4">
+                    <div class="input-field col s6">
                         <input id="password" name="password" type="password" class="validate" required>
                         <label for="password">Password</label>
                     </div>

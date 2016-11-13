@@ -3,8 +3,6 @@
  */
 var mongoose = require('mongoose');
 var admin_schema = mongoose.Schema({
-    admin_id : { type : Number, unique : true },
-    access_level : { type : Number, unique : true },
     fname : String,
     lname : String,
     dob : Date,
