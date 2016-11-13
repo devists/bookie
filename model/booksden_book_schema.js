@@ -4,7 +4,7 @@
 
 var mongoose = require('mongoose');
 var booksden_book_schema = mongoose.Schema({
-  isbn: Number,
+  isbn: { type : Number, unique : true },
   title: String,
   publisher: String,
   p_date: Date,

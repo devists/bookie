@@ -1,10 +1,12 @@
 /**
  * Created by vermanil on 10/11/16.
  */
+
+var categoryDetail = require('./category_details_schema');
 var mongoose = require('mongoose');
 var book_category_schema = mongoose.Schema({
-    isbn : Number,
-    category_id : Number
+    isbn : { type : Number, unique : true },
+    category_id : [{type: mongoose.Schema.Types.ObjectId, ref: 'categoryDetail'}]
 });
 
 var book_category = mongoose.model('book_category', book_category_schema);

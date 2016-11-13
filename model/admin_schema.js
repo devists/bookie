@@ -4,13 +4,13 @@
 var mongoose = require('mongoose');
 var admin_schema = mongoose.Schema({
     admin_id : { type : Number, unique : true },
-    access_level : Number,
+    access_level : { type : Number, unique : true },
     fname : String,
     lname : String,
     dob : Date,
     gender : String,
-    email : String,
-    username : String,
+    email : { type : String, unique : true },
+    username : { type : String, unique : true },
     password : String
 });
 
