@@ -60,7 +60,7 @@ router.get('/register', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
   // res.send('successfully register');
-  console.log(req.body);
+  // console.log(req.body);
   var newAdmin = admin(req.body);
   newAdmin.save(function (err, data) {
 

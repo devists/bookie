@@ -109,7 +109,7 @@ router.get('/delete/:id', function (req, res, next) {
 });
 
 router.post('/support/:id', function (req, res) {
-  if (!req.session.userData._id)
+  if (typeof req.session.userData === 'undefined')
     res.json({'status': 0});
   else {
     var bookId = req.params.id;

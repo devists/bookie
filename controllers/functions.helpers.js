@@ -3,6 +3,7 @@
  */
 
 var reqSupport = require('../model/req_support_schema');
+var favSupport = require('../model/fav_books_schema');
 
 var fn={};
 
@@ -28,6 +29,32 @@ fn.getSupportCount = function (cb) {
         suppData[data[i]._id[0]] = data[i].count;
       }
       cb(suppData);
+    }
+  });
+};
+
+fn.getFavCount = function (cb) {
+  var favData={};
+
+  var agg = [
+    {$group:{
+      _id:'$book_id',
+      count:{$sum:1}
+    }}
+  ];
+
+  favSupport.aggregate(agg, function (err, data) {
+    if (err)
+      console.log(err);
+    else {
+      console.log(data.length);
+      for (var i=0; i<data.length;i++){
+        /*var obj={};
+        obj[data[i]._id[0]] = data[i].count;
+        suppData.push(obj);*/
+        favData[data[i]._id[0]] = data[i].count;
+      }
+      cb(favData);
     }
   });
 };

@@ -154,7 +154,7 @@ nav.navbar-bookie .nav-wrapper {
     margin-bottom: 0.75rem;
 }
 
-.book__support .material-icons {
+.book__support .material-icons, .book__love .material-icons {
     cursor: pointer;
 }
 

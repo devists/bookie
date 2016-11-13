@@ -8,7 +8,9 @@ var bodyParser = require('body-parser');
 var bookData = require('../data/books.js');
 // var db = require('../data/books.js');
 var books = require('../model/booksden_book_schema');
+var favBooks = require('../model/fav_books_schema');
 var session = require('express-session');
+var helper = require('./functions.helpers');
 
 var expressOptions = {
   secret: "secret",
@@ -23,7 +25,6 @@ router.use(session(expressOptions));
  */
 router.use(function (req, res, next) {
   res.locals.session = req.session.userData;
-  console.log(res.locals.session);
   next();
 });
 
@@ -139,6 +140,31 @@ router.get('/delete/:id', function (req, res, next) {
       res.send(err);
 
     res.send("Successfully Deleted");
+  });
+});
+
+router.post('/fav/:id', function (req, res) {
+
+  if (typeof req.session.userData === 'undefined')
+    res.json({'status': 0});
+  else {
+    var bookId = req.params.id;
+    var studId = req.session.userData._id;
+    var newFav = favBooks({book_id: bookId, stud_id: studId});
+    newFav.save(function (err, supp) {
+      if (err)
+        res.json({status: 0, err: err});
+      else {
+        res.json({status: 1});
+      }
+    });
+  }
+});
+
+router.get('/fav', function (req, res) {
+
+  helper.getFavCount(function (data) {
+    res.json({favData: data});
   });
 });
 
