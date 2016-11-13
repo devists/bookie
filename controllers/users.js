@@ -41,7 +41,8 @@ router.get('/logout',function (req,res) {
     if (err)
       res.send(err);
 
-    res.send("Logout Successfully");
+    //res.send("Logout Successfully");
+    res.redirect('/books');
   })
 });
 
@@ -53,7 +54,8 @@ router.post('/login', function (req, res, next) {
       req.session.userData = loginData;
       res.locals.session = loginData;
       console.log(res.locals.session);
-      res.send('successfully login');
+      //res.send('successfully login');
+      res.redirect('/books');
       console.log("successfully login");
     }
     else
@@ -66,7 +68,7 @@ router.get('/register', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-  res.send('successfully register');
+  //res.send('successfully register');
   console.log(req.body);
   var newStudent = student(req.body);
   newStudent.save(function (err, newtable) {
@@ -74,6 +76,7 @@ router.post('/', function (req, res, next) {
       console.log(err);
     else
       res.render('login', {});
+      res.redirect('/users/login')
     //console.log("successfully register");
   });
 });
