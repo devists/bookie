@@ -5,56 +5,66 @@
             <div class="white-space space-md clearfix"></div>
             <h4 class="col s10 offset-s1 t-trans-c">{{user}} Registration</h4>
             <div class="white-space space-sm clearfix"></div>
-            <form method="POST" action="/{{submitUrl}}" class="col s10 offset-s1">
+            <form method="POST" action="/{{submitUrl}}{{#ifCond action 'edit' }}/settings/save{{/ifCond}}" class="col s10 offset-s1">
                 <div class="row">
                     <div class="input-field col s6">
-                        <input name="fname" id="fname" type="text" class="validate" required>
+                        <input name="fname" id="fname" type="text" class="validate" required
+                               value="{{#ifCond action 'edit' }}{{data.fname}}{{/ifCond}}">
                         <label for="fname">First Name</label>
                     </div>
                     <div class="input-field col s6">
-                        <input name="lname" id="lname" type="text" class="validate" required>
+                        <input name="lname" id="lname" type="text" class="validate" required
+                               value="{{#ifCond action 'edit' }}{{data.lname}}{{/ifCond}}">
                         <label for="lname">Last Name</label>
                     </div>
                 </div>
                 {{#ifCond user 'student' }}
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="stud_id" name="stud_id" type="number" class="validate" required>
+                            <input id="stud_id" name="stud_id" type="number" class="validate" required
+                                   value="{{#ifCond action 'edit' }}{{data.stud_id}}{{/ifCond}}">
                             <label for="stud_id">Student Id</label>
                         </div>
                     </div>
                 {{/ifCond}}
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="email" name="email" type="email" class="validate" required>
+                        <input id="email" name="email" type="email" class="validate" required
+                               value="{{#ifCond action 'edit' }}{{data.email}}{{/ifCond}}">
                         <label for="email">Email</label>
                     </div>
                 </div>
                 {{#ifCond user 'student' }}
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="batch" name="batch" type="text" class="validate" required>
+                            <input id="batch" name="batch" type="text" class="validate" required
+                                   value="{{#ifCond action 'edit' }}{{data.batch}}{{/ifCond}}">
                             <label for="batch">Batch</label>
                         </div>
                         <div class="input-field col s6">
-                            <input name="branch" id="branch" type="text" class="validate" required>
+                            <input name="branch" id="branch" type="text" class="validate" required
+                                   value="{{#ifCond action 'edit' }}{{data.branch}}{{/ifCond}}">
                             <label for="branch">Branch</label>
                         </div>
                     </div>
                 {{/ifCond}}
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="dob" name="dob" type="date" class="datepicker validate" required>
+                        <input id="dob" name="dob" type="date" class="datepicker validate" required
+                               value="{{#ifCond action 'edit' }}{{data.dob}}{{/ifCond}}">
                         <label for="dob">DOB</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="gender" name="gender" type="text" class="validate" required>
+                        <input id="gender" name="gender" type="text" class="validate" required
+                               value="{{#ifCond action 'edit' }}{{data.gender}}{{/ifCond}}">
                         <label for="gender">Gender</label>
                     </div>
                 </div>
+                {{#ifCond action 'register'}}
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="username" name="username" type="text" class="validate" required>
+                        <input id="username" name="username" type="text" class="validate" required
+                               value="{{#ifCond action 'edit' }}{{data.username}}{{/ifCond}}">
                         <label for="username">Username</label>
                     </div>
                     <div class="input-field col s6">
@@ -62,6 +72,7 @@
                         <label for="password">Password</label>
                     </div>
                 </div>
+                    {{/ifCond}}
                 <div class="row">
                     <div class="input-field col s4">
                         <button class="btn waves-effect waves-light" type="submit">Register
