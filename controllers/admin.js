@@ -35,7 +35,8 @@ router.get('/logout',function (req,res) {
     if (err)
       res.send(err);
 
-    res.send("Logout Successfully");
+    //res.send("Logout Successfully");
+    res.redirect('/books');
   })
 });
 
@@ -47,8 +48,9 @@ router.post('/login', function (req, res, next) {
       req.session.userData = loginData;
       res.locals.session = loginData;
       console.log(res.locals.session);
-      res.send('successfully login');
-      console.log("successfully login");
+      //res.send('successfully login');
+      res.redirect('/requests');
+      //console.log("successfully login");
     }
     else
       console.log('invalid username or password');
@@ -69,6 +71,7 @@ router.post('/', function (req, res, next) {
       res.send(err);
     else
       res.render('login', {});
+      res.redirect('/admin/login');
   });
 });
 
