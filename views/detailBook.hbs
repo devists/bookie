@@ -4,7 +4,13 @@
         <div class="row">
             <div class="col s10 offset-s1">
                 <div class="white-space space-md clearfix"></div>
-                <h4 class="t-trans-c color-primary"> {{data.title}}</h4>
+                <h4 class="t-trans-c color-primary"> {{data.title}}
+
+                    {{#if session.stud_id}}
+                    {{else if session}}
+                        <a class="btn btn-sm waves-effect waves-light" href="/books/delete/{{data._id}}">Delete</a>
+                    {{/if}}
+                </h4>
                 <div class="book__meta">
                     <div class="book__author grey-text">by {{data.author}}</div>
                     <div class="book__pdate grey-text">{{formatDate data.p_date}}</div>

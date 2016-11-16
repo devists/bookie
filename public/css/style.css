@@ -24,6 +24,10 @@ p {
 }
 
 /*Helper Functions*/
+.btn.btn-sm {
+    font-size: 1rem;
+    padding: 0 0.75rem;
+}
 
 .m-r-2x {
     margin-right: 2rem;
@@ -32,6 +36,7 @@ p {
 .bold {
     font-weight: bold;
 }
+
 .t-trans-c {
     text-transform: capitalize;
 }
@@ -150,7 +155,7 @@ nav.navbar-bookie .nav-wrapper {
     vertical-align: middle;
 }
 
-.book-extras > div{
+.book-extras > div {
     margin-bottom: 0.75rem;
 }
 
