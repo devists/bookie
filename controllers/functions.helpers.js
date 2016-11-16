@@ -53,9 +53,6 @@ fn.getFavCount = function (cb) {
     else {
       console.log(data.length);
       for (var i = 0; i < data.length; i++) {
-        /*var obj={};
-         obj[data[i]._id[0]] = data[i].count;
-         suppData.push(obj);*/
         favData[data[i]._id[0]] = data[i].count;
       }
       cb(favData);
@@ -79,12 +76,17 @@ fn.getFavByUser = function (uid, cb) {
         cb(err);
       else {
         var favs = {};
+        var favArr = [];
         datas.map(function (data) {
           if (typeof data['book_id'][0] !== 'undefined') {
-            favs[data['book_id'][0]['_id']] = {'data':data['book_id'][0]};
+            favs[data['book_id'][0]['_id']] = {'data': data['book_id'][0]};
           }
         });
-        cb(err, favs);
+
+        for (var prop in favs) {
+          favArr.push(favs[prop]['data']);
+            }
+        cb(err, favArr);
       }
     })
 

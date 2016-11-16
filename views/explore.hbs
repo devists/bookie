@@ -11,6 +11,9 @@
         {{#ifCond action 'requests' }}
             <h5 class="center fw-300">Browsing <span class="color-primary">{{resLength}}</span> Requested Books</h5>
         {{/ifCond}}
+        {{#ifCond action 'favourite' }}
+            <h5 class="center fw-300">Showing <span class="color-primary">{{resLength}}</span>  of Your Favourite</h5>
+        {{/ifCond}}
 
         <div class="space space-xm"></div>
         <!--Card-->

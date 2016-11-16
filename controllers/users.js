@@ -95,13 +95,22 @@ router.post('/settings/save', function (req, res, next) {
 
 router.get('/fav', function (req, res) {
   var id = req.session.userData._id;
-  console.log(id);
-  helpers.getFavByUser(id, function (err, data) {
-    if (err)
-      res.send(err);
-
-    res.send(data);
-  })
+  if (typeof req.session.userData === 'undefined')
+    res.json({'status': 0});
+  else {
+    console.log(id);
+    helpers.getFavByUser(id, function (err, data) {
+      if (err)
+        res.send(err);
+      res.render('explore', {
+        action: 'favourite',
+        data: data,
+        resLength: data.length,
+        viewUrl: 'books'
+      });
+      // res.send(data);
+    })
+  }
 });
 
 
