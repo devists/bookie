@@ -3,6 +3,7 @@ var router = express.Router();
 //var bodyParser = require('body-parser');
 var student = require('../model/student_schema');
 var session = require('express-session');
+var helpers = require('./functions.helpers');
 
 var expressOptions = {
   secret: "secret",
@@ -90,6 +91,17 @@ router.post('/settings/save', function (req, res, next) {
       });
   });
 
+});
+
+router.get('/fav', function (req, res) {
+  var id = req.session.userData._id;
+  console.log(id);
+  helpers.getFavByUser(id, function (err, data) {
+    if (err)
+      res.send(err);
+
+    res.send(data);
+  })
 });
 
 

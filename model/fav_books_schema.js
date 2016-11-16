@@ -2,9 +2,10 @@
  * Created by vermanil on 10/11/16.
  */
 var mongoose = require('mongoose');
-var book = require('./booksden_book_schema');
+var books = require('./booksden_book_schema');
+var student = require('./student_schema');
 var fav_books_schema = mongoose.Schema({
-    book_id: [{type: mongoose.Schema.Types.ObjectId, ref: 'Books'}],
+    book_id: [{type: mongoose.Schema.Types.ObjectId, ref: 'books'}],
     stud_id: [{type: mongoose.Schema.Types.ObjectId, ref: 'student'}]
 });
 
