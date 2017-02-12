@@ -9,6 +9,7 @@ var bookData = require('../data/books.js');
 // var db = require('../data/books.js');
 var books = require('../model/booksden_book_schema');
 var favBooks = require('../model/fav_books_schema');
+var bookRequest = require('../model/book_request_schema.js')
 var session = require('express-session');
 var helper = require('./functions.helpers');
 
@@ -44,6 +45,18 @@ router.get('/', function (req, res, next) {
       res.render('explore', {'action': 'browse', data: data, 'resLength': data.length, viewUrl: 'books'});
   });
 
+});
+/*
+* show user requestable book
+* */
+router.get('/requested', function (req, res, next) {
+  var studId = req.session.userData._id;
+  bookRequest.find({opened_by : studId},  function (err, result1) {
+    if (err)
+      res.send(err);
+    console.log(result1)
+    res.send(result1)
+  });
 });
 
 
