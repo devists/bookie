@@ -52,8 +52,14 @@
                             <i
                                     class="material-icons left">account_circle</i></a></li>
                     {{else}}
-                        <li><a href="/users/login">Login</a></li>
-                        <li><a href="/users/register">Register</a></li>
+                        <ul class="dropdown-content">
+                        <li><a href="/users/login">Student Login</a></li>
+                        <li><a href="/users/register">Student Register</a></li>
+                        </ul>
+                        <ul class="dropdown-content">
+                        <li><a href="/admin/login">Admin Login</a></li>
+                        <li><a href="/admin/register">Admin Register</a></li>
+                        </ul>
                     {{/if}}
                 </ul>
             </div>
